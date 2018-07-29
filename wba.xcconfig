@@ -1,0 +1,7 @@
+//this is the unique 10-digit Team ID
+DEVELOPMENT_TEAM = Z64LW2RKYD
+//66E3338L7F
+//Z64LW2RKYD
+
+//Signing Certificate
+CODE_SIGN_IDENTITY = iPhone Developer

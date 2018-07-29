@@ -1,0 +1,61 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+project.ext {
+    cucumberVersion = '1.2.5'
+    junitVersion = '4.12'
+    seleniumVersion = '3.7.0'
+    gsonVersion = '2.8.0'
+    springVersion = '4.3.4.RELEASE'
+}
+
+repositories {
+
+    mavenCentral()
+    jcenter()
+    maven {
+        credentials {
+            username "testautott@tigertext.com"
+            password "tigerqa"
+        }
+        url "https://nativeautoframework.appspot.com"
+    }
+
+}
+
+dependencies {
+    compile group: 'com.framework', name: 'nativeautoframework', version: "1.2.9.10.5.4-SNAPSHOT"
+    testCompile 'info.cukes:cucumber-junit:' + cucumberVersion
+    testCompile 'info.cukes:cucumber-jvm:' + cucumberVersion
+    testCompile 'info.cukes:cucumber-core:' + cucumberVersion
+    testCompile 'info.cukes:cucumber-spring:' + cucumberVersion
+    testCompile group: 'com.saucelabs', name: 'ci-sauce', version: "1.129"
+    testCompile group: 'com.saucelabs', name: 'sauce_java_common', version: "2.1.23"
+    testCompile group: 'com.saucelabs', name: 'sauce_junit', version: "2.1.23"
+    testCompile group: 'org.testng', name: 'testng', version:'6.10'
+    testCompile group: 'com.jayway.jsonpath', name: 'json-path-assert', version:'2.0.0'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: seleniumVersion
+    compile group: 'com.saucelabs', name: 'saucerest', version: "1.0.33"
+    compile group: 'info.cukes', name: 'cucumber-testng', version: cucumberVersion
+    compile group: 'org.testng', name: 'testng', version: '6.10'
+    compile group: 'org.springframework', name: 'spring-context', version: springVersion
+    compile group: 'org.springframework', name: 'spring-test', version: springVersion
+    compile group: 'com.typesafe', name: 'config', version:'1.0.2'
+    compile group: 'io.appium', name: 'java-client', version: '5.0.4'
+    compile group: 'junit', name: 'junit', version:'4.12'
+    compile group: 'com.jayway.jsonpath', name: 'json-path', version:'2.0.0'
+    compile group: 'org.ini4j', name: 'ini4j', version:'0.5.2'
+    compile group: 'mysql', name: 'mysql-connector-java', version:'5.1.6'
+    compile group: 'info.cukes', name: 'cucumber-testng', version:'1.2.5'
+    compile group: 'org.json', name: 'json', version:'20140107'
+    compile 'io.github.prashant-ramcharan:courgette-jvm:1.4.0'
+}
+
+test {
+    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.2.1'
+}
